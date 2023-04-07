@@ -1,2 +1,2 @@
 # LearnAndGrow
-The main idea is create vocabulary application for learning foreign words which you add alone. 
+The main idea is to create a vocabulary application for learning foreign words which you add alone.
