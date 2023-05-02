@@ -55,8 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Childs\AddNewWordModel.cs" />
+    <Compile Include="Model\Childs\LearnNewWordsModel.cs" />
+    <Compile Include="Model\Childs\WelcomeModel.cs" />
+    <Compile Include="Utilities\BaseViewModel.cs" />
+    <Compile Include="Utilities\NotifyPropertyChanged.cs" />
+    <Compile Include="ViewModel\Childs\AddNewWordViewModel.cs" />
+    <Compile Include="ViewModel\Childs\LearnNewWordsViewModel.cs" />
+    <Compile Include="ViewModel\Childs\WelcomeViewModel.cs" />
+    <Compile Include="View\Childs\AddNewWordView.xaml.cs">
+      <DependentUpon>AddNewWordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Childs\LearnNewWordsView.xaml.cs">
+      <DependentUpon>LearnNewWordsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Childs\WelcomeView.xaml.cs">
+      <DependentUpon>WelcomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Word.cs" />
-    <Page Include="View\LearnAndGrowView.xaml">
+    <Page Include="View\Childs\AddNewWordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LearnAndGrowWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -67,10 +88,18 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Model\LearnAndGrowModel.cs" />
     <Compile Include="ViewModel\LearnAndGrowViewModel.cs" />
-    <Compile Include="View\LearnAndGrowView.xaml.cs">
-      <DependentUpon>LearnAndGrowView.xaml</DependentUpon>
+    <Compile Include="View\LearnAndGrowWindow.xaml.cs">
+      <DependentUpon>LearnAndGrowWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Childs\LearnNewWordsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Childs\WelcomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -98,10 +127,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="Localizations\" />
-    <Folder Include="View\Dialogs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

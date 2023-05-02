@@ -1,0 +1,58 @@
+﻿<Window
+    x:Class="LearnAndGrow.LearnAndGrowView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:LearnAndGrow.View.Childs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LearnAndGrow"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:LearnAndGrow.Model"
+    xmlns:viewModel="clr-namespace:LearnAndGrow.ViewModel"
+    xmlns:viewModelChilds="clr-namespace:LearnAndGrow.ViewModel.Childs"
+    Title="LearnAndGrowView"
+    Width="800"
+    Height="450"
+    d:DataContext="{d:DesignInstance Type=viewModel:LearnAndGrowViewModel}"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModelChilds:LearnNewWordsViewModel}">
+            <controls:LearnNewWordsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModelChilds:WelcomeViewModel}">
+            <controls:WelcomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModelChilds:AddNewWordViewModel}">
+            <controls:AddNewWordView />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <ContentControl Content="{Binding SelectedViewModel}" />
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                Width="200"
+                Margin="10"
+                Command="{Binding UpdateViewCommand}"
+                CommandParameter="AddNewWord"
+                Content="Add new Word" />
+            <Button
+                Width="200"
+                Margin="10"
+                Command="{Binding UpdateViewCommand}"
+                CommandParameter="Welcome"
+                Content="Welcome" />
+            <Button
+                Width="200"
+                Margin="10"
+                Command="{Binding UpdateViewCommand}"
+                CommandParameter="Next"
+                Content="Next" />
+        </StackPanel>
+    </Grid>
+</Window>
