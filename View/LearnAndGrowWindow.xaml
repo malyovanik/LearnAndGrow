@@ -51,8 +51,8 @@
                 Width="200"
                 Margin="10"
                 Command="{Binding UpdateViewCommand}"
-                CommandParameter="Next"
-                Content="Next" />
+                CommandParameter="Learn"
+                Content="Learn" />
         </StackPanel>
     </Grid>
 </Window>

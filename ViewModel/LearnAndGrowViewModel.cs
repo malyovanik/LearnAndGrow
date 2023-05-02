@@ -44,7 +44,7 @@ namespace LearnAndGrow.ViewModel
             {
                 SelectedViewModel = new WelcomeViewModel();
             }
-            else if(ob.ToString() == "Next")
+            else if(ob.ToString() == "Learn")
             {
                 var model = new LearnNewWordsModel();
                 SelectedViewModel = new LearnNewWordsViewModel(model);             
