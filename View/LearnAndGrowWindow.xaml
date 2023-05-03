@@ -40,19 +40,38 @@
                 Margin="10"
                 Command="{Binding UpdateViewCommand}"
                 CommandParameter="AddNewWord"
-                Content="Add new Word" />
+                Content="Add new Word">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Border />
             <Button
                 Width="200"
                 Margin="10"
                 Command="{Binding UpdateViewCommand}"
                 CommandParameter="Welcome"
-                Content="Welcome" />
+                Content="Welcome">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7" />
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button
                 Width="200"
                 Margin="10"
                 Command="{Binding UpdateViewCommand}"
                 CommandParameter="Learn"
-                Content="Learn" />
+                Content="Learn">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7" />
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
