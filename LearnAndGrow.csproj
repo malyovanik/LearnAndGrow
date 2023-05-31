@@ -72,6 +72,7 @@
     <Compile Include="View\Childs\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vocabulary.cs" />
     <Compile Include="Word.cs" />
     <Page Include="View\Childs\AddNewWordView.xaml">
       <SubType>Designer</SubType>
