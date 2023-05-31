@@ -1,0 +1,19 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entities.WEB.DataTransferObjects
+{
+    public class WordForCreationDto
+    {
+        //[Required(ErrorMessage = "Name is required")]
+        //[StringLength(60, ErrorMessage = "Name can't be longer than 60 characters")]
+        //public int WordId { get; set; }
+
+        [Required(ErrorMessage = "WordName is required")]
+        [StringLength(60, ErrorMessage = "WordName can't be longer than 60 characters")]
+        public string? WordName { get; set; } //TODO: Make readonly.
+
+        [Required(ErrorMessage = "Translation is required")]
+        [StringLength(60, ErrorMessage = "Translation can't be longer than 60 characters")]
+        public string? Translation { get; set; }
+    }
+}
