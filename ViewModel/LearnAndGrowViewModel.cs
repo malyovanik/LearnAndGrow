@@ -3,16 +3,12 @@ using LearnAndGrow.Model;
 using LearnAndGrow.Model.Childs;
 using LearnAndGrow.Utilities;
 using LearnAndGrow.ViewModel.Childs;
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace LearnAndGrow.ViewModel
 {
     public class LearnAndGrowViewModel : BaseViewModel
     {
-
         private BaseViewModel _selectedViewModel = new WelcomeViewModel();
         private ICommand _updateViewCommand;
 
@@ -40,23 +36,23 @@ namespace LearnAndGrow.ViewModel
 
         private void UpdateView(object ob)
         {
-            if(ob.ToString() == "Welcome")
+            if (ob.ToString() == "Welcome")
             {
                 SelectedViewModel = new WelcomeViewModel();
             }
-            else if(ob.ToString() == "Learn")
+            else if (ob.ToString() == "Learn")
             {
                 var model = new LearnNewWordsModel();
-                SelectedViewModel = new LearnNewWordsViewModel(model);             
+                SelectedViewModel = new LearnNewWordsViewModel(model);
             }
-            else if(ob.ToString() == "AddNewWord")
+            else if (ob.ToString() == "AddNewWord")
             {
                 SelectedViewModel = new AddNewWordViewModel();
             }
-
         }
 
         private readonly LearnAndGrowModel _model;
+
         public LearnAndGrowViewModel(LearnAndGrowModel model)
         {
             _model = model;

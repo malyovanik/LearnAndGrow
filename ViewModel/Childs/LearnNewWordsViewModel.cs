@@ -1,14 +1,7 @@
 ﻿using LearnAndGrow.Commands;
-using LearnAndGrow.Model;
 using LearnAndGrow.Model.Childs;
 using LearnAndGrow.Utilities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace LearnAndGrow.ViewModel.Childs
@@ -30,13 +23,13 @@ namespace LearnAndGrow.ViewModel.Childs
             {
                 if (_selectWordCommand == null)
                 {
-                    _selectWordCommand = new RelayCommand(param => AnswerSelectedCommand());
+                    _selectWordCommand = new RelayCommand(param => AnswerSelectedCommand(param));
                 }
                 return _selectWordCommand;
             }
         }
 
-        private void AnswerSelectedCommand()
+        private void AnswerSelectedCommand(object selectedWord)
         {
             UpdateWords();
         }
@@ -51,7 +44,7 @@ namespace LearnAndGrow.ViewModel.Childs
         {
             var random = new Random();
             var words = _model.GetWordsForLearning();
-            CurrentWord = words[random.Next(words.Count)].WordInEnglish;
+            CurrentWord = words[random.Next(words.Count)].WordInForeignLanguage;
 
             int i = 0;
             foreach (var word in words)
@@ -59,19 +52,19 @@ namespace LearnAndGrow.ViewModel.Childs
                 switch (i++)
                 {
                     case 0:
-                        FirstWord = word.WordInUkrainian;
+                        FirstWord = word.WordInNativeLanguage;
                         break;
 
                     case 1:
-                        SecondWord = word.WordInUkrainian;
+                        SecondWord = word.WordInNativeLanguage;
                         break;
 
                     case 2:
-                        ThirdWord = word.WordInUkrainian;
+                        ThirdWord = word.WordInNativeLanguage;
                         break;
 
                     case 3:
-                        FourWord = word.WordInUkrainian;
+                        FourWord = word.WordInNativeLanguage;
                         break;
                 }
             }

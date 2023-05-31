@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace LearnAndGrow.Model
+﻿namespace LearnAndGrow.Model
 {
     public class LearnAndGrowModel
     {
