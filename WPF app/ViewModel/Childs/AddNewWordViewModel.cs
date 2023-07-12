@@ -8,6 +8,7 @@ namespace LearnAndGrow.ViewModel.Childs
     {
         private string _wordInForeignLanguage;
         private string _wordInNativeLanguage;
+        private Vocabulary vocabulary { get ;set;} = new Vocabulary();
 
         public string WordInForeignLanguage
         {
@@ -45,7 +46,7 @@ namespace LearnAndGrow.ViewModel.Childs
 
         private void AddWordCommand()
         {
-            Vocabulary.AddWord(new Word(WordInForeignLanguage, WordInNativeLanguage));
+            vocabulary.AddWord(new Word(WordInForeignLanguage, WordInNativeLanguage));
         }
     }
 }

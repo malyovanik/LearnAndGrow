@@ -44,7 +44,7 @@ namespace LearnAndGrow.ViewModel.Childs
         {
             var random = new Random();
             var words = _model.GetWordsForLearning();
-            CurrentWord = words[random.Next(words.Count)].WordInForeignLanguage;
+            CurrentWord = words[random.Next(words.Count)].Translation;
 
             int i = 0;
             foreach (var word in words)
@@ -52,19 +52,19 @@ namespace LearnAndGrow.ViewModel.Childs
                 switch (i++)
                 {
                     case 0:
-                        FirstWord = word.WordInNativeLanguage;
+                        FirstWord = word.WordName;
                         break;
 
                     case 1:
-                        SecondWord = word.WordInNativeLanguage;
+                        SecondWord = word.WordName;
                         break;
 
                     case 2:
-                        ThirdWord = word.WordInNativeLanguage;
+                        ThirdWord = word.WordName;
                         break;
 
                     case 3:
-                        FourWord = word.WordInNativeLanguage;
+                        FourWord = word.WordName;
                         break;
                 }
             }
