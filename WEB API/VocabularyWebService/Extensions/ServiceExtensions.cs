@@ -9,7 +9,7 @@ namespace VocabularyWebAPI.Extensions
     {
         public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
         {
-            var connectionString = config["mysqlconnection:connectionString"];
+            var connectionString = config.GetConnectionString("EmployeeAppCon");
             services.AddDbContext<RepositoryContext>(o => o.UseMySql(connectionString,
                 MySqlServerVersion.LatestSupportedServerVersion));
         }

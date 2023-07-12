@@ -3,24 +3,25 @@ using Contracts.WEB.Interfaces;
 using Entities.WEB.DataTransferObjects;
 using Entities.WEB.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace VocabularyWebAPI.Controllers
 {
     [Route("api/words")]
     [ApiController]
-    public class DepartmentController : ControllerBase
+    public class WordController : ControllerBase
     {
-        private IRepositoryWrapper _repository;
-        private IMapper _mapper;
+        private readonly IRepositoryWrapper _repository;
+        private readonly IMapper _mapper;
 
-        public DepartmentController(IRepositoryWrapper repository, IMapper mapper)
+        public WordController(IRepositoryWrapper repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public IActionResult GetAllOwners()
+        [HttpGet(Name = "GetAllWords")]
+        public IActionResult GetAllWords()
         {
             try
             {
@@ -35,21 +36,21 @@ namespace VocabularyWebAPI.Controllers
             }
         }
 
-        //[HttpGet("{wordName}")]
-        //public IActionResult GetWordByName(string wordName)
-        //{
-        //    try
-        //    {
-        //        var owners = _repository.Word.GetWordByName(wordName);
-        //        return Ok(owners);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return StatusCode(500, "Internal server error");
-        //    }
-        //}
+        [HttpGet("{wordName}")]
+        public IActionResult GetWordByName(string wordName)
+        {
+            try
+            {
+                var owners = _repository.Word.GetWordByName(wordName);
+                return Ok(owners);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
-        [HttpGet("{id}", Name = "WordById")]
+        [HttpGet("{id:int}")]
         public IActionResult GetWordById(int id)
         {
             try
@@ -57,9 +58,9 @@ namespace VocabularyWebAPI.Controllers
                 var owners = _repository.Word.GetWordById(id);
                 return Ok(owners);
             }
-            catch (Exception)
+            catch (Exception ex )
             {
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
 
@@ -93,7 +94,7 @@ namespace VocabularyWebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostWordItem([FromBody] WordForCreationDto word)
+        public IActionResult PostWordItem([FromBody] WordForCreationDto word) // Post any words(collection).
         {
             try
             {
@@ -109,7 +110,7 @@ namespace VocabularyWebAPI.Controllers
                 _repository.Word.AddWord(ownerEntity);
                 _repository.Save();
                 var createdOwner = _mapper.Map<WordDTO>(ownerEntity);
-                return CreatedAtRoute("WordById", new { id = createdOwner.WordId }, createdOwner);
+                return CreatedAtAction(nameof(GetWordById), new { id = createdOwner.WordId }, createdOwner);
             }
             catch (Exception ex)
             {
