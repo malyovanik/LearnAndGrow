@@ -1,23 +1,28 @@
 ﻿using LearnAndGrow.Commands;
 using LearnAndGrow.Utilities;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace LearnAndGrow.ViewModel.Childs
 {
     internal class AddNewWordViewModel : BaseViewModel
     {
+        
         private string _wordInForeignLanguage;
         private string _wordInNativeLanguage;
         private Vocabulary vocabulary { get ;set;} = new Vocabulary();
-
+       
         public string WordInForeignLanguage
         {
             get { return _wordInForeignLanguage; }
             set
             {
-                _wordInForeignLanguage = value;
+              
+               _wordInForeignLanguage = value;
                 OnPropertyChanged();
+                
             }
+            
         }
 
         public string WordInNativeLanguage
@@ -47,6 +52,12 @@ namespace LearnAndGrow.ViewModel.Childs
         private void AddWordCommand()
         {
             vocabulary.AddWord(new Word(WordInForeignLanguage, WordInNativeLanguage));
+            CleanString();
+        }
+          
+        public void CleanString()
+        {
+            WordInForeignLanguage = " " ; WordInNativeLanguage = " ";    
         }
     }
 }

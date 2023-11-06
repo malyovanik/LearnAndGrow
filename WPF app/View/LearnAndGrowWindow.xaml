@@ -15,6 +15,8 @@
     d:DataContext="{d:DesignInstance Type=viewModel:LearnAndGrowViewModel}"
     mc:Ignorable="d">
     <Window.Resources>
+        
+        
         <DataTemplate DataType="{x:Type viewModelChilds:LearnNewWordsViewModel}">
             <controls:LearnNewWordsView />
         </DataTemplate>
@@ -53,7 +55,7 @@
                 Margin="10"
                 Command="{Binding UpdateViewCommand}"
                 CommandParameter="Welcome"
-                Content="Welcome">
+                Content="Start page">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="7" />
@@ -65,7 +67,7 @@
                 Margin="10"
                 Command="{Binding UpdateViewCommand}"
                 CommandParameter="Learn"
-                Content="Learn">
+                Content="Learn words" Click="Button_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="7" />

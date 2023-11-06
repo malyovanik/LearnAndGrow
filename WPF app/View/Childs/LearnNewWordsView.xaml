@@ -10,17 +10,52 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
+                 TargetType="Button">
+            <Border Background="{TemplateBinding Background}"  
+          BorderBrush="{TemplateBinding BorderBrush}"  
+          BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"  
+             Value="False">
+                    <Setter Property="Background"  
+              Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"  
+              Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+
     <Grid>
+        
+
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+
         <TextBlock
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="80"
-            Text="{Binding CurrentWord}" />
+            Margin="0,110,0,0"
+            FontSize="50"
+            Text="{Binding CurrentWordTranslation}" />
+        <TextBlock Text="Правильні відповіді:" Margin="254,1,100,10"  FontSize="20" />
+        <TextBlock Text="Не правильні відповіді:" Margin="230,20,100,10" FontSize="20"  />
+        <TextBlock Text="{Binding IncurentAnswer}" Margin="445,20,100,10" FontSize="20" Foreground="Red" />
+        <TextBlock Text="{Binding CurentAnswer}" Margin="445,1,100,10" FontSize="20" Foreground="Green"  />
+        <TextBlock Text="{Binding ShowMessage}"   Margin="0,50,0,0 " HorizontalAlignment="Center" FontSize="50" Foreground="Green" />
+
+
+
+
         <Grid Grid.Row="1" Margin="10">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -29,9 +64,13 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            
             <Button
+                
                 Grid.Row="0"
                 Grid.Column="0"
+                Template="{StaticResource NoMouseOverButtonTemplate}"
+                Background="{Binding ButtonBackground1}"                
                 Margin="5"
                 Command="{Binding Path=SelectWordCommand}"
                 CommandParameter="First button"
@@ -40,6 +79,8 @@
             <Button
                 Grid.Row="0"
                 Grid.Column="1"
+                Template="{StaticResource NoMouseOverButtonTemplate}"
+                Background="{Binding ButtonBackground2}"
                 Margin="5"
                 Command="{Binding Path=SelectWordCommand}"
                 CommandParameter="Second button"
@@ -48,6 +89,8 @@
             <Button
                 Grid.Row="1"
                 Grid.Column="0"
+                Template="{StaticResource NoMouseOverButtonTemplate}"
+                Background="{Binding ButtonBackground3}"            
                 Margin="5"
                 Command="{Binding Path=SelectWordCommand}"
                 CommandParameter="Third button"
@@ -56,11 +99,14 @@
             <Button
                 Grid.Row="1"
                 Grid.Column="1"
+                Template="{StaticResource NoMouseOverButtonTemplate}"
+                Background="{Binding ButtonBackground4}"                
                 Margin="5"
                 Command="{Binding Path=SelectWordCommand}"
                 CommandParameter="Four button"
                 Content="{Binding Path=FourWord}"
                 FontSize="46" />
         </Grid>
+
     </Grid>
 </UserControl>
